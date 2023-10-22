@@ -1,42 +1,7 @@
 {
     "cars": [
-        {
-            "id": 1,
-            "make": "Toyota",
-            "model": "Camry",
-            "year": 2022
-        },
-        {
-            "id": 2,
-            "make": "Honda",
-            "model": "Civic",
-            "year": 2021
-        },
-        {
-            "id": 3,
-            "make": "honda",
-            "model": "civic",
-            "year": "2021"
-        },
-        {
-            "id": 4,
-            "make": "honda",
-            "model": "civic",
-            "year": "2021"
-        }
     ],
     "sales": [
-        {
-            "id": 1,
-            "car_id": 1,
-            "buyer": "John Doe",
-            "price": 20000
-        },
-        {
-            "id": 2,
-            "car_id": 2,
-            "buyer": "Jane Smith",
-            "price": 18000
-        }
+
     ]
 }
