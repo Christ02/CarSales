@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!--<!DOCTYPE html>
 <html>
 <head>
     <title>Lista de Carros</title>
@@ -6,10 +6,79 @@
 <body>
     <h1>Lista de Carros</h1>
     <ul>
-        <!-- Aquí puedes agregar lógica para mostrar la lista de carros (que aún no está en la base de datos) -->
+         Aquí puedes agregar lógica para mostrar la lista de carros (que aún no está en la base de datos) 
     </ul>
     <a href="{{ url_for('create_car') }}">Agregar un nuevo carro</a>
     <a href="{{ url_for('cars') }}">Ver Lista de Carros</a>
 
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Carros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Lista de Carros</h1>
+        <p>Lista de nuestros carros disponibles</p>
+    </header>
+
+    <main>
+        <a href="create_car.html">Agregar un nuevo carro</a>
+
+
+        <section class="featured-car">
+            <img src="images/porsche-model.png" width="400" height="250" alt="Porsche 911">
+
+            <h2>2020 posche 911</h2>
+            <p>Immaculate condition, low mileage, fully loaded.</p>
+            <a href="#">View Details</a>
+        </section>
+
+        <section class="car-inventory">
+            <h2>Explore Our Inventory</h2>
+            <div class="car-listing">
+                <img src="images/car1.jpg" alt="Car 1">
+                <h3>2022 Audi R8</h3>
+                <p>Experience the thrill of a true sports car.</p>
+                <a href="#">View Details</a>
+            </div>
+
+            <div class="car-listing">
+                <img src="images/car2.jpg" alt="Car 2">
+                <h3>2023 Tesla Model S</h3>
+                <p>Luxury redefined with cutting-edge technology.</p>
+                <a href="#">View Details</a>
+            </div>
+
+            <div class="car-listing">
+                <img src="images/car3.jpg" alt="Car 3">
+                <h3>2022 Mercedes-Benz S-Class</h3>
+                <p>The epitome of luxury and sophistication.</p>
+                <a href="#">View Details</a>
+            </div>
+        </section>
+
+        <section class="why-choose-us">
+            <h2>Why Choose Premium Cars?</h2>
+            <ul>
+                <li>Expertise in pre-owned luxury vehicles</li>
+                <li>Rigorous inspection and quality assurance</li>
+                <li>Transparent pricing and financing options</li>
+                <li>Dedicated customer service and support</li>
+                
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Premium Cars. All rights reserved.</p>
+    </footer>
+</body>
 </html>
+
