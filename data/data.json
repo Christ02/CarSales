@@ -12,6 +12,19 @@
             "transmission": "Automatico",
             "engine": "1200cc",
             "fuel_type": "Gasolina"
+        },
+        {
+            "id": 2,
+            "make": "Mitsubishi",
+            "model": "S",
+            "year": "2009",
+            "color": "gris",
+            "vehicle_type": "Sedan",
+            "mileage": "90000",
+            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcars.usnews.com%2Fcars-trucks%2Fmitsubishi%2Flancer%2F2009&psig=AOvVaw1QTKZ7Rq8YD4YWbTpnV9iv&ust=1698358560574000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJCln-ickoIDFQAAAAAdAAAAABAE",
+            "transmission": "Automatico",
+            "engine": "2000",
+            "fuel_type": "super"
         }
     ],
     "sales": []
