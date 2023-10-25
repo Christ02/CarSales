@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Lista de Carros</title>
-    <link rel="stylesheet"href="/static/css/cars-style.css">
+    <link rel="stylesheet" href="/static/css/cars-style.css">
 </head>
 
 <header>
@@ -11,14 +11,13 @@
     <nav class="navigation">
         <a href="{{ url_for('create_car') }}">Agregar Carro</a>
         <a href="{{ url_for('sales') }}">Historial de Ventas</a>
-        <!-- <a href="cars.html">Lista de Carros</a> -->
     </nav>
 </header>
 
 <body>
     <section id="cars">
         <h2>Carros Disponibles</h2>
-        <table>
+        <table class="car-table">
             <tr>
                 <th>Marca</th>
                 <th>Modelo</th>
@@ -39,7 +38,7 @@
                 <td>{{ car.color }}</td>
                 <td>{{ car.vehicle_type }}</td>
                 <td>{{ car.mileage }}</td>
-                <td><img src="{{ car.photo }}" alt="Foto"></td>
+                <td><img class="car-photo" src="{{ car.photo }}" alt="Foto"></td>
                 <td>{{ car.transmission }}</td>
                 <td>{{ car.engine }}</td>
                 <td>{{ car.fuel_type }}</td>
