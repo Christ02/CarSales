@@ -6,14 +6,14 @@ app = Flask(__name__)
 # Ruta principal
 @app.route('/')
 def index():
-    return "Bienvenido a la venta de carros"
+    return render_template('index.html')
 
 # Ruta para mostrar la lista de carros desde el archivo JSON
 @app.route('/cars')
 def cars():
     with open('data/data.json', 'r') as json_file:
         data = json.load(json_file)
-        cars = data.get('cars', [])  # Obtén la lista de carros desde el archivo JSON
+        cars = data.get('cars', [])
 
     return render_template('cars.html', cars=cars)
 
@@ -24,26 +24,37 @@ def create_car():
         make = request.form['make']
         model = request.form['model']
         year = request.form['year']
+        # Agrega los campos adicionales que mencionaste en el formulario
+        color = request.form['color']
+        vehicle_type = request.form['vehicle_type']
+        mileage = request.form['mileage']
+        photo = request.form['photo']
+        transmission = request.form['transmission']
+        engine = request.form['engine']
+        fuel_type = request.form['fuel_type']
 
         with open('data/data.json', 'r') as json_file:
             data = json.load(json_file)
             cars = data.get('cars', [])
 
-            # Genera un nuevo ID para el carro
             new_car_id = max([car['id'] for car in cars]) + 1 if cars else 1
 
-            # Crea un nuevo carro
             new_car = {
                 'id': new_car_id,
                 'make': make,
                 'model': model,
-                'year': year
+                'year': year,
+                'color': color,
+                'vehicle_type': vehicle_type,
+                'mileage': mileage,
+                'photo': photo,
+                'transmission': transmission,
+                'engine': engine,
+                'fuel_type': fuel_type
             }
 
-            # Agrega el nuevo carro a la lista de carros
             cars.append(new_car)
 
-            # Actualiza el archivo JSON
             data['cars'] = cars
             with open('data/data.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
@@ -52,13 +63,33 @@ def create_car():
 
     return render_template('create_car.html')
 
-@app.route('/sales')
-def sales():
-    with open('data/data.json', 'r') as json_file:
-        data = json.load(json_file)
-        sales = data.get('sales', [])  # Obtén la lista de ventas desde el archivo JSON
+# Ruta para mostrar la lista de ventas desde el archivo JSON
+def create_sale():
+    if request.method == 'POST':
 
-    return render_template('sales.html', sales=sales)
+        sale_data = {
+            'buyer_name': request.form['buyer_name'],
+            'car_id': int(request.form['car_id']),
+            'sale_price': float(request.form['sale_price']),
+            'date': request.form['date']
+        }
 
+        with open('data/data.json', 'r') as json_file:
+            data = json.load(json_file)
+            sales = data.get('sales', [])
+
+            # Genera un nuevo ID para la venta
+            new_sale_id = max([sale['id'] for sale in sales]) + 1 if sales else 1
+
+            # Agrega el nuevo registro de venta a la lista de ventas
+            sale_data['id'] = new_sale_id
+            sales.append(sale_data)
+
+            # Actualiza el archivo JSON
+            data['sales'] = sales
+            with open('data/data.json', 'w') as json_file:
+                json.dump(data, json_file, indent=4)
+
+        return redirect(url_for('sales'))
 if __name__ == '__main__':
     app.run(debug=True)

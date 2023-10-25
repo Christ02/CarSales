@@ -2,21 +2,18 @@
 <html>
 <head>
     <title>Crear un Nuevo Carro</title>
-    <link rel="stylesheet" href="agCar-style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cars-style.css') }}">
 </head>
 
 <header>
     <h1>Crear Nuevo Carro</h1>
 
     <nav class="navigation">
-        <!-- <a href="create_car.html">Agregar Carro</a> -->
-        <a href="create_sale.html">Agregar Venta</a>
-        <a href="sales.html">Historial</a>
-        <a href="cars.html">Lista de Carros</a>
-        
+        <a href="{{ url_for('create_car') }}">Agregar Carro</a>
+        <a href="{{ url_for('sales') }}">Historial de Ventas</a>
+        <a href="{{ url_for('cars') }}">Lista de Carros</a>
     </nav>
 </header>
-
 
 <body>
     <section id="create_car">
@@ -26,6 +23,13 @@
         <input type="text" name="make" placeholder="Marca">
         <input type="text" name="model" placeholder="Modelo">
         <input type="text" name="year" placeholder="Año">
+        <input type="text" name="color" placeholder="Color">
+        <input type="text" name="vehicle_type" placeholder="Tipo de Vehículo">
+        <input type="text" name="mileage" placeholder="Kilometraje">
+        <input type="text" name="photo" placeholder="URL de la Fotografía">
+        <input type="text" name="transmission" placeholder="Transmisión (Automático/Mecánico)">
+        <input type="text" name="engine" placeholder="Motor">
+        <input type="text" name="fuel_type" placeholder="Tipo de Combustible">
         <input type="submit" value="Crear Carro">
     </form>
 </body>

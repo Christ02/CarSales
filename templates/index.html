@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Venta de Carros</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Bienvenido a la Venta de Carros</h1>
+    <ul>
+        <li><a href="{{ url_for('cars') }}">Ver Lista de Carros</a></li>
+        <li><a href="{{ url_for('create_car') }}">Crear un Nuevo Carro</a></li>
+        <li><a href="{{ url_for('sales') }}">Ver Lista de Ventas</a></li>
+        <!-- Agrega enlaces a otras páginas aquí -->
+    </ul>
+</body>
+</html>

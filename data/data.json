@@ -1,7 +1,18 @@
 {
     "cars": [
+        {
+            "id": 1,
+            "make": "Honda",
+            "model": "Civic",
+            "year": "2021",
+            "color": "Gris",
+            "vehicle_type": "Sedan",
+            "mileage": "18000",
+            "photo": "www",
+            "transmission": "Automatico",
+            "engine": "1200cc",
+            "fuel_type": "Gasolina"
+        }
     ],
-    "sales": [
-
-    ]
+    "sales": []
 }

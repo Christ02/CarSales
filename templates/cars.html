@@ -1,96 +1,51 @@
- <!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Lista de Carros</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cars-style.css') }}">
 </head>
-<body>
+
+<header>
     <h1>Lista de Carros</h1>
-    <ul>
-         Aquí puedes agregar lógica para mostrar la lista de carros (que aún no está en la base de datos) 
-    </ul>
-    <a href="{{ url_for('create_car') }}">Agregar un nuevo carro</a>
-    <a href="{{ url_for('cars') }}">Ver Lista de Carros</a>
 
-</body>
-</html> -->
+    <nav class="navigation">
+        <a href="{{ url_for('create_car') }}">Agregar Carro</a>
+        <a href="{{ url_for('sales') }}">Historial de Ventas</a>
+        <a href="{{ url_for('cars') }}">Lista de Carros</a>
+    </nav>
+</header>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Carros</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
-    
-    <header>
-        <h1>Lista de Carros</h1>
-
-        <nav class="navigation">
-            <a href="create_car.html">Agregar Carro</a>
-            <a href="create_sale.html">Agregar Venta</a>
-            <a href="sales.html">Historial</a>
-            
-        </nav>
-    </header>
-
-
-
-    <main>
-        <div class="container"></div>
-        <!-- <a href="create_car.html">Agregar un nuevo carro</a> -->
-        <section class="featured-car">
-            <img src="images/porsche-model.png" width="400" height="250" alt="Porsche 911">
-
-            <h3>2020 posche 911</h3>
-            <p>Descripcion de Carro aqui</p> <!--Poner descripcion corta del carro aqui-->
-            <a href="#">View Details</a>
-            <p></p>
-            <p></p>
-        </section>
-
-        <section class="car-inventory">
-            <div class="car-listing">
-                <img src="images/mazda-car.png" width="450" height="250" alt="Mazda 6">
-                <h3>2022 Mazda 6</h3>
-                <p>Descripcion de Carro aqui</p> <!--Poner descripcion corta del carro aqui-->
-                
-                <a href="#">View Details</a>
-                <p></p>
-                <p></p>
-            </div>
-
-            <div class="car-listing">
-                <img src="images/tesla-car.png" width="550" height="250" alt="Tesla S">
-                <h3>2023 Tesla Model S</h3>
-                <p>Descripcion de Carro aqui</p> <!--Poner descripcion corta del carro aqui-->
-                <a href="#">View Details</a>
-            </div>
-
-            <div class="car-listing">
-                <img src="images/mercedes2.png" width="350" height="250" alt="Mercedes Benz S">
-                <h3>2022 Mercedes-Benz S-Class</h3>
-                <p>Descripcion de Carro aqui</p> <!--Poner descripcion corta del carro aqui-->
-                <a href="#">View Details</a>
-            </div>
-        </section>
-
-        <!-- <section class="why-choose-us">
-            <h2>Why Choose Premium Cars?</h2>
-            <ul>
-                <li>Expertise in pre-owned luxury vehicles</li>
-                <li>Rigorous inspection and quality assurance</li>
-                <li>Transparent pricing and financing options</li>
-                <li>Dedicated customer service and support</li>
-                
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2023 Premium Cars. All rights reserved.</p>
-    </footer> -->
+    <section id="cars">
+        <h2>Carros Disponibles</h2>
+        <table>
+            <tr>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Año</th>
+                <th>Color</th>
+                <th>Tipo de Vehículo</th>
+                <th>Kilometraje</th>
+                <th>Fotografía</th>
+                <th>Transmisión</th>
+                <th>Motor</th>
+                <th>Tipo de Combustible</th>
+            </tr>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car.make }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.year }}</td>
+                <td>{{ car.color }}</td>
+                <td>{{ car.vehicle_type }}</td>
+                <td>{{ car.mileage }}</td>
+                <td><img src="{{ car.photo }}" alt="Foto"></td>
+                <td>{{ car.transmission }}</td>
+                <td>{{ car.engine }}</td>
+                <td>{{ car.fuel_type }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
 </body>
 </html>
-

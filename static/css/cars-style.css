@@ -1,0 +1,68 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el encabezado */
+header {
+    background-color: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* Estilos para la lista de enlaces en la barra de navegación */
+.navigation {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+.navigation a:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para la lista de carros */
+#car-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.car-card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+    text-align: center;
+}
+
+.car-card h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.car-card p {
+    font-size: 1rem;
+    margin: 0;
+}
