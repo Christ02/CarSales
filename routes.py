@@ -32,3 +32,10 @@ def create_sale():
         return redirect(url_for('sales'))  # Redirige de nuevo a la lista de ventas
 
     return render_template('create_sale.html')
+
+
+@app.route('/motos')
+def motos():
+
+
+    return render_template('motos.html', motos=motos)

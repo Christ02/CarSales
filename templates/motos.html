@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Carros</title>
+    <title>Lista de Motos</title>
     <link rel="stylesheet" href="/static/css/cars-style.css">
 </head>
 
 <header>
-    <h1>Lista de Carros</h1>
+    <h1>Lista de Motos</h1>
 
     <nav class="navigation">
-        <a href="{{ url_for('create_car') }}">Agregar Carro</a>
-        <a href="{{ url_for('sales') }}">Historial de Ventas</a>
-        <a href="{{ url_for('motos') }}">Lista de Motos</a>
+        <a href="{{ url_for('create_moto') }}">Crear Una Moto</a>
+        <a href="{{ url_for('cars') }}">Lista de Carros</a>
+        <a href="{{ url_for('sales') }}">Lista de Ventas</a>
     </nav>
 </header>
 
 <body>
-    <section id="cars">
-        <h2>Carros Disponibles</h2>
+    <section id="motos">
+        <h2>Motos Disponibles</h2>
         
         <!-- Agrega un formulario de filtro -->
-        <form method="GET" action="{{ url_for('cars') }}" id="car-filter-form">
+        <form method="GET" action="{{ url_for('motos') }}" id="moto-filter-form">
             <label for="make-filter">Marca:</label>
             <input type="text" name="make" id="make-filter">
             
@@ -33,31 +33,29 @@
             <input type="submit" value="Filtrar">
         </form>
         
-        <table class="car-table">
+        <table class="moto-table">
             <tr>
                 <th>Marca</th>
                 <th>Modelo</th>
                 <th>Año</th>
                 <th>Color</th>
-                <th>Tipo de Vehículo</th>
                 <th>Kilometraje</th>
                 <th>Fotografía</th>
                 <th>Transmisión</th>
                 <th>Motor</th>
                 <th>Tipo de Combustible</th>
             </tr>
-            {% for car in cars %}
+            {% for moto in motos %}
             <tr>
-                <td>{{ car.make }}</td>
-                <td>{{ car.model }}</td>
-                <td>{{ car.year }}</td>
-                <td>{{ car.color }}</td>
-                <td>{{ car.vehicle_type }}</td>
-                <td>{{ car.mileage }}</td>
-                <td><img class="car-photo" src="{{ car.photo }}" alt="Foto"></td>
-                <td>{{ car.transmission }}</td>
-                <td>{{ car.engine }}</td>
-                <td>{{ car.fuel_type }}</td>
+                <td>{{ moto.make }}</td>
+                <td>{{ moto.model }}</td>
+                <td>{{ moto.year }}</td>
+                <td>{{ moto.color }}</td>
+                <td>{{ moto.mileage }}</td>
+                <td><img class="moto-photo" src="{{ moto.photo }}" alt="Foto"></td>
+                <td>{{ moto.transmission }}</td>
+                <td>{{ moto.engine }}</td>
+                <td>{{ moto.fuel_type }}</td>
             </tr>
             {% endfor %}
         </table>
