@@ -17,6 +17,21 @@
 <body>
     <section id="cars">
         <h2>Carros Disponibles</h2>
+        
+        <!-- Agrega un formulario de filtro -->
+        <form method="GET" action="{{ url_for('cars') }}" id="car-filter-form">
+            <label for="make-filter">Marca:</label>
+            <input type="text" name="make" id="make-filter">
+            
+            <label for="model-filter">Modelo:</label>
+            <input type="text" name="model" id="model-filter">
+            
+            <label for="year-filter">Año:</label>
+            <input type="text" name="year" id="year-filter">
+            
+            <input type="submit" value="Filtrar">
+        </form>
+        
         <table class="car-table">
             <tr>
                 <th>Marca</th>
