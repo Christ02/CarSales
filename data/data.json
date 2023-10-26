@@ -27,5 +27,12 @@
             "fuel_type": "super"
         }
     ],
-    "sales": []
+    "sales": [
+        {
+            "buyer_name": "Pedro",
+            "car_id": 1,
+            "sale_price": 1000,
+            "date":"25/10/2023" 
+        }
+    ]
 }
