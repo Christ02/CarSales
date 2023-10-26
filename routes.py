@@ -41,3 +41,9 @@ def create_seller():
         return redirect(url_for('sellers'))  
 
     return render_template('create_seller.html')
+
+@app.route('/motos')
+def motos():
+
+
+    return render_template('motos.html', motos=motos)

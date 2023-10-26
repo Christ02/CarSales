@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear un Nuevo Carro</title>
+    <title>Crear una Nueva Moto</title>
     <link rel="stylesheet" href="/static/css/cars-style.css">
 </head>
 
 <header>
-    <h1>Crear Nuevo Carro</h1>
+    <h1>Crear Nueva Moto</h1>
 
     <nav class="navigation">
         <a href="{{ url_for('index') }}">Inicio</a>
-        <a href="{{ url_for('cars') }}">Lista de Carros</a>
-
+        <a href="{{ url_for('motos') }}">Lista de Motos</a>
     </nav>
 </header>
 
 <body>
-    <section id="create_car">
+    <section id="create_moto">
     </section>
-    <h1>Crear un Nuevo Carro</h1>
-    <form method="POST" action="/create_car">
+    <h1>Crear una Nueva Moto</h1>
+    <form method="POST" action="/create_moto">
         <input type="text" name="make" placeholder="Marca">
         <input type="text" name="model" placeholder="Modelo">
         <input type="text" name="year" placeholder="Año">
         <input type="text" name="color" placeholder="Color">
-        <input type="text" name="vehicle_type" placeholder="Tipo de Vehículo">
+        <!-- <input type="text" name="vehicle_type" placeholder="Tipo de Vehículo"> -->
         <input type="text" name="mileage" placeholder="Kilometraje">
         <input type="text" name="photo" placeholder="URL de la Fotografía">
         <input type="text" name="transmission" placeholder="Transmisión (Automático/Mecánico)">
         <input type="text" name="engine" placeholder="Motor">
         <input type="text" name="fuel_type" placeholder="Tipo de Combustible">
-        <input type="submit" value="Crear Carro">
+        <input type="submit" value="Crear Moto">
     </form>
 </body>
 </html>

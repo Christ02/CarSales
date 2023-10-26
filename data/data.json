@@ -43,8 +43,14 @@
             "date": "31/10/2023"
         }
     ],
-    "seller": [],
-    "sellers": [],
+    "sellers": [
+        {
+            "id": 1,
+            "name": "Javier",
+            "email": "j@gmail.com",
+            "phone": "12345678"
+        }
+    ],
     "motos": [
         {
             "id": 1,
