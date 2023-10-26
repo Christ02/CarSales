@@ -15,10 +15,9 @@
 </header>
 
 <body>
-    <section id="motos">
+    <section id="car-list">
         <h2>Motos Disponibles</h2>
         
-        <!-- Agrega un formulario de filtro -->
         <form method="GET" action="{{ url_for('motos') }}" id="moto-filter-form">
             <label for="make-filter">Marca:</label>
             <input type="text" name="make" id="make-filter">
@@ -32,7 +31,7 @@
             <input type="submit" value="Filtrar">
         </form>
         
-        <table class="moto-table">
+        <table class="car-table">
             <tr>
                 <th>Marca</th>
                 <th>Modelo</th>
@@ -51,7 +50,7 @@
                 <td>{{ moto.year }}</td>
                 <td>{{ moto.color }}</td>
                 <td>{{ moto.mileage }}</td>
-                <td><img class="moto-photo" src="{{ moto.photo }}" alt="Foto"></td>
+                <td><img class="car-photo" src="{{ moto.photo }}" alt="Foto"></td>
                 <td>{{ moto.transmission }}</td>
                 <td>{{ moto.engine }}</td>
                 <td>{{ moto.fuel_type }}</td>

@@ -198,7 +198,6 @@ def create_sale():
             'sale_price': sale_price,
             'date': date
             
-            
         }
 
             # Agrega el nuevo registro de venta a la lista de ventas
