@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Crear una Nueva Venta</title>
-    <link rel="stylesheet" href="/static/css/cars-style.css">
+    <title>Registrar Venta de Carro</title>
+    <link rel="stylesheet" href="/static/css/create-styles.css">
+    <link rel="stylesheet" href="/static/css/create-sales-style.css">
 </head>
-
 <header>
-    <h1>Crear Nueva Venta</h1>
-
+<body>
+    <h1>Registrar Venta de Carro</h1>
     <nav class="navigation">
         <a href="{{ url_for('index') }}">Inicio</a>
-        <a href="{{ url_for('sales') }}">Historial de Ventas</a>
+        <a href="{{ url_for('sales') }}">Lista de Ventas</a>
     </nav>
 </header>
-
-
-<body>
-    <h1>Crear una Nueva Venta</h1>
-    <form method="POST" action="/create_sale">
-        <input type="text" name="buyer_name" placeholder="Nombre Vendedor">
-        <input type="text" name="car_id" placeholder="ID del Carro">
-        <input type="text" name="sale_price" placeholder="Precio de Venta">
-        <input type="text" name="date" placeholder="Fecha">
-        <input type="submit" value="Crear Venta">
-    </form>
+    <section id="create_sales">
+        <form method="POST" action="/create_sale">
+            <label for="buyer_name">Nombre del Comprador:</label>
+            <input type="text" name="buyer_name" placeholder="Nombre del Comprador" required>
+            <label for="car_id">ID del Carro:</label>
+            <input type="text" name="car_id" placeholder="ID del Carro" required>
+            <label for="sale_price">Precio de Venta:</label>
+            <input type="text" name="sale_price" placeholder="Precio de Venta" required>
+            <label for="date">Fecha:</label>
+            <input type="text" name="date" placeholder="Fecha" required>
+            <input type="submit" value="Registrar Venta">
+        </form>
+    </section>
 </body>
 </html>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
+import os
 
 app = Flask(__name__)
 
@@ -68,14 +69,18 @@ def create_car():
         make = request.form['make']
         model = request.form['model']
         year = request.form['year']
-        # Agrega los campos adicionales que mencionaste en el formulario
         color = request.form['color']
         vehicle_type = request.form['vehicle_type']
         mileage = request.form['mileage']
-        photo = request.form['photo']
         transmission = request.form['transmission']
         engine = request.form['engine']
         fuel_type = request.form['fuel_type']
+
+        # Procesa la imagen cargada
+        photo = request.files['photo']
+        if photo and allowed_file(photo.filename):
+            filename = secure_filename(photo.filename)
+            photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
         with open('data/data.json', 'r') as json_file:
             data = json.load(json_file)
@@ -331,4 +336,5 @@ def delete_seller(seller_id):
 
 
 if __name__ == '__main__':
+    app.config['UPLOAD_FOLDER'] = 'uploads'
     app.run(debug=True)

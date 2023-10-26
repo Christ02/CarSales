@@ -3,6 +3,7 @@
 <head>
     <title>Crear un Nuevo Carro</title>
     <link rel="stylesheet" href="/static/css/cars-style.css">
+    <link rel="stylesheet" href="/static/css/create-car-style.css">
 </head>
 
 <header>
@@ -11,26 +12,45 @@
     <nav class="navigation">
         <a href="{{ url_for('index') }}">Inicio</a>
         <a href="{{ url_for('cars') }}">Lista de Carros</a>
-
     </nav>
 </header>
 
 <body>
     <section id="create_car">
+        <h2>Formulario de Creación</h2>
+        <form method="POST" action="/create_car" enctype="multipart/form-data">
+            <label for="make">Marca:</label>
+            <input type="text" name="make" id="make" required>
+
+            <label for="model">Modelo:</label>
+            <input type="text" name="model" id="model" required>
+
+            <label for="year">Año:</label>
+            <input type="text" name="year" id="year" required>
+
+            <label for="color">Color:</label>
+            <input type="text" name="color" id="color" required>
+
+            <label for="vehicle_type">Tipo de Vehículo:</label>
+            <input type="text" name="vehicle_type" id="vehicle_type" required>
+
+            <label for="mileage">Kilometraje:</label>
+            <input type="text" name="mileage" id="mileage" required>
+
+            <label for="photo">Foto del Carro:</label>
+            <input type="file" name="photo" id="photo" accept="image/*" required>
+
+            <label for="transmission">Transmisión (Automático/Mecánico):</label>
+            <input type="text" name="transmission" id="transmission" required>
+
+            <label for="engine">Motor:</label>
+            <input type="text" name="engine" id="engine" required>
+
+            <label for="fuel_type">Tipo de Combustible:</label>
+            <input type="text" name="fuel_type" id="fuel_type" required>
+
+            <input type="submit" value="Crear Carro">
+        </form>
     </section>
-    <h1>Crear un Nuevo Carro</h1>
-    <form method="POST" action="/create_car">
-        <input type="text" name="make" placeholder="Marca">
-        <input type="text" name="model" placeholder="Modelo">
-        <input type="text" name="year" placeholder="Año">
-        <input type="text" name="color" placeholder="Color">
-        <input type="text" name="vehicle_type" placeholder="Tipo de Vehículo">
-        <input type="text" name="mileage" placeholder="Kilometraje">
-        <input type="text" name="photo" placeholder="URL de la Fotografía">
-        <input type="text" name="transmission" placeholder="Transmisión (Automático/Mecánico)">
-        <input type="text" name="engine" placeholder="Motor">
-        <input type="text" name="fuel_type" placeholder="Tipo de Combustible">
-        <input type="submit" value="Crear Carro">
-    </form>
 </body>
 </html>
