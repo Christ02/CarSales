@@ -18,13 +18,13 @@
             "make": "Mitsubishi",
             "model": "S",
             "year": "2009",
-            "color": "gris",
+            "color": "Gris",
             "vehicle_type": "Sedan",
             "mileage": "90000",
             "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcars.usnews.com%2Fcars-trucks%2Fmitsubishi%2Flancer%2F2009&psig=AOvVaw1QTKZ7Rq8YD4YWbTpnV9iv&ust=1698358560574000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJCln-ickoIDFQAAAAAdAAAAABAE",
             "transmission": "Automatico",
-            "engine": "2000",
-            "fuel_type": "super"
+            "engine": "2000cc",
+            "fuel_type": "Super"
         }
     ],
     "sales": [
@@ -32,7 +32,7 @@
             "id": 1,
             "buyer_name": "Pedro",
             "car_id": 1,
-            "sale_price": 1000,
+            "sale_price": 1000.0,
             "date": "25/10/2023"
         },
         {
@@ -43,6 +43,23 @@
             "date": "31/10/2023"
         }
     ],
+<<<<<<< HEAD
     "seller": [],
     "sellers": []
+=======
+    "motos": [
+        {
+            "id": 1,
+            "make": "Honda",
+            "model": "Roca",
+            "year": "2020",
+            "color": "Azul",
+            "mileage": "6000",
+            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Felcomercio.pe%2Fruedas-tuercas%2Fhonda-peru-renueva-portafolio-cb125f-twister-fotos-noticia-514905-noticia%2F&psig=AOvVaw0avrHiMfdmBxTDi_wvZEep&ust=1698370909234000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiR_OfKkoIDFQAAAAAdAAAAABAE",
+            "transmission": "Automatico",
+            "engine": "300cc",
+            "fuel_type": "Gasolina"
+        }
+    ]
+>>>>>>> 9a5c6df13ff32f589c611f2e85321549e3bf4711
 }
