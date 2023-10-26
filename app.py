@@ -81,15 +81,15 @@ def create_car():
     return render_template('create_car.html')
 
 # Ruta para mostrar la lista de ventas desde el archivo JSON
+@app.route('/create_sale', methods=['GET', 'POST'])
 def create_sale():
     if request.method == 'POST':
+        buyer_name = request.form['buyer_name']
+        car_id = int(request.form['car_id'])
+        sale_price = float(request.form['sale_price'])
+        date = request.form['date']
 
-        sale_data = {
-            'buyer_name': request.form['buyer_name'],
-            'car_id': int(request.form['car_id']),
-            'sale_price': float(request.form['sale_price']),
-            'date': request.form['date']
-        }
+        
 
         with open('data/data.json', 'r') as json_file:
             data = json.load(json_file)
@@ -98,14 +98,29 @@ def create_sale():
             # Genera un nuevo ID para la venta
             new_sale_id = max([sale['id'] for sale in sales]) + 1 if sales else 1
 
+
+            sale_data = {
+            'id': new_sale_id,
+            'buyer_name': buyer_name,
+            'car_id': car_id,
+            'sale_price': sale_price,
+            'date': date
+            
+            
+        }
+
             # Agrega el nuevo registro de venta a la lista de ventas
-            sale_data['id'] = new_sale_id
+            
             sales.append(sale_data)
 
             # Actualiza el archivo JSON
             data['sales'] = sales
             with open('data/data.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
+
+        return redirect(url_for('sales'))
+
+    return render_template('create_sale.html')
     
 # Ruta para eliminar un carro por ID
 @app.route('/delete_car/<int:car_id>', methods=['POST'])
