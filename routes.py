@@ -33,13 +33,6 @@ def create_sale():
 
     return render_template('create_sale.html')
 
-
-@app.route('/motos')
-def motos():
-
-
-    return render_template('motos.html', motos=motos)
-
 @app.route('/create_seller', methods=['GET', 'POST'])
 def create_seller():
     if request.method == 'POST':

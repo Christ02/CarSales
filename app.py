@@ -26,7 +26,7 @@ def cars():
 
     return render_template('cars.html', cars=filtered_cars)
 
-@app.route('/sales')
+@app.route('/sales', methods=['GET'])
 def sales():
     with open('data/data.json', 'r') as json_file:
         data = json.load(json_file)
@@ -88,52 +88,6 @@ def create_car():
         return redirect(url_for('cars'))
 
     return render_template('create_car.html')
-
-
-@app.route('/create_moto', methods=['GET', 'POST'])
-def create_moto():
-    if request.method == 'POST':
-        make = request.form['make']
-        model = request.form['model']
-        year = request.form['year']
-        # Agrega los campos adicionales que mencionaste en el formulario
-        color = request.form['color']
-        # vehicle_type = request.form['vehicle_type']
-        mileage = request.form['mileage']
-        photo = request.form['photo']
-        transmission = request.form['transmission']
-        engine = request.form['engine']
-        fuel_type = request.form['fuel_type']
-
-        with open('data/data.json', 'r') as json_file:
-            data = json.load(json_file)
-            motos = data.get('motos', [])
-
-            new_moto_id = max([moto['id'] for moto in motos]) + 1 if motos else 1
-
-            new_moto = {
-                'id': new_moto_id,
-                'make': make,
-                'model': model,
-                'year': year,
-                'color': color,
-                # 'vehicle_type': vehicle_type,
-                'mileage': mileage,
-                'photo': photo,
-                'transmission': transmission,
-                'engine': engine,
-                'fuel_type': fuel_type
-            }
-
-            motos.append(new_moto)
-
-            data['motos'] = motos
-            with open('data/data.json', 'w') as json_file:
-                json.dump(data, json_file, indent=4)
-
-        return redirect(url_for('motos'))
-
-    return render_template('create_moto.html')
 
 # Ruta para mostrar la lista de ventas desde el archivo JSON
 @app.route('/create_sale', methods=['GET', 'POST'])
@@ -309,6 +263,7 @@ def delete_seller(seller_id):
             json.dump(data, json_file, indent=4)
     
     return redirect(url_for('sellers'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
