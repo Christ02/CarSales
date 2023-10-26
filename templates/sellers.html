@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Vendedores</title>
+    <link rel="stylesheet" href="/static/css/cars-style.css">
+</head>
+
+<header>
+    <h1>Lista de Vendedores</h1>
+
+    <nav class="navigation">
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('create_seller') }}">Agregar Vendedor</a>
+
+    </nav>
+</header>
+
+<body>
+    <section id="sellers">
+        <h2>Lista de Vendedores</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Eliminar</th>
+            </tr>
+            {% for seller in sellers %}
+            <tr>
+                <td>{{ seller.id }}</td>
+                <td>{{ seller.name }}</td>
+                <td>{{ seller.email }}</td>
+                <td>{{ seller.phone }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('delete_seller', seller_id=seller.id) }}">
+                        <button type="submit">Despedir</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</body>
+</html>

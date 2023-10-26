@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Vendedor</title>
+    <link rel="stylesheet" href="/static/css/cars-style.css">
+</head>
+
+<header>
+    <h1>Crear Vendedor</h1>
+    <nav class="navigation">
+        <a href="{{ url_for('sellers') }}">Lista de Vendedores</a>
+    </nav>
+</header>
+
+<body>
+    <section id="create-seller">
+        <h2>Ingrese los datos del nuevo vendedor</h2>
+        <form method="POST">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <button type="submit">Crear Vendedor</button>
+        </form>
+    </section>
+</body>
+</html>
