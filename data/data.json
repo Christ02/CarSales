@@ -25,6 +25,32 @@
             "transmission": "Automatico",
             "engine": "2000",
             "fuel_type": "super"
+        },
+        {
+            "id": 3,
+            "make": "Mazda",
+            "model": "Mazda 3",
+            "year": "2022",
+            "color": "Blanco",
+            "vehicle_type": "Sedan",
+            "mileage": "0",
+            "photo": "2023_mazda_mazda3-pic-7536657043995346619-1024x768.jpeg",
+            "transmission": "Automatico",
+            "engine": "2.0",
+            "fuel_type": "Gasolina"
+        },
+        {
+            "id": 4,
+            "make": "Mazda",
+            "model": "Mazda 2",
+            "year": "2021",
+            "color": "Blanco",
+            "vehicle_type": "Sedan",
+            "mileage": "0.0",
+            "photo": "2023_mazda_mazda3-pic-7536657043995346619-1024x768.jpeg",
+            "transmission": "Automatico",
+            "engine": "2.0",
+            "fuel_type": "Gasolina"
         }
     ],
     "sales": [

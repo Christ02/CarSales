@@ -1,8 +1,21 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json
 import os
+from file_upload import allowed_file
+from werkzeug.utils import secure_filename
+
+
 
 app = Flask(__name__)
+
+
+UPLOAD_FOLDER = 'uploads'
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 # Ruta principal
 @app.route('/')
@@ -333,7 +346,6 @@ def delete_seller(seller_id):
             json.dump(data, json_file, indent=4)
     
     return redirect(url_for('sellers'))
-
 
 if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = 'uploads'
