@@ -91,11 +91,12 @@ def create_sale():
 
 
             sale_data = {
+            'id': new_sale_id,
             'buyer_name': buyer_name,
             'car_id': car_id,
             'sale_price': sale_price,
-            'date': date,
-            'id': new_sale_id
+            'date': date
+            
             
         }
 
@@ -109,7 +110,7 @@ def create_sale():
                 json.dump(data, json_file, indent=4)
 
         return redirect(url_for('sales'))
-        
+
     return render_template('create_sale.html')
     
 # Ruta para eliminar un carro por ID
