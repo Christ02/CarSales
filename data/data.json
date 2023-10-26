@@ -44,8 +44,7 @@
         }
     ],
     "seller": [],
-    "sellers": []
-=======
+    "sellers": [],
     "motos": [
         {
             "id": 1,
@@ -60,5 +59,4 @@
             "fuel_type": "Gasolina"
         }
     ]
->>>>>>> 9a5c6df13ff32f589c611f2e85321549e3bf4711
 }
