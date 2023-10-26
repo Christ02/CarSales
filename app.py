@@ -26,13 +26,22 @@ def cars():
 
     return render_template('cars.html', cars=filtered_cars)
 
-@app.route('/sales')
+@app.route('/sales', methods=['GET'])
 def sales():
     with open('data/data.json', 'r') as json_file:
         data = json.load(json_file)
-        sales = data.get('sales', [])  
+        sales = data.get('sales', [])
+    
+    buyer_name_filter = request.args.get('buyer_name', '')
+    car_id_filter = request.args.get('car_id', '')
+    date_filter = request.args.get('date', '')
 
-    return render_template('sales.html', sales=sales)
+    filtered_sales = [sale for sale in sales if
+                     sale['buyer_name'].lower().startswith(buyer_name_filter.lower()) and
+                     str(sale['car_id']).startswith(car_id_filter) and
+                     sale['date'].lower().startswith(date_filter.lower())]
+
+    return render_template('sales.html', sales=filtered_sales)
 
 # Ruta para crear un nuevo carro y actualizar el archivo JSON
 @app.route('/create_car', methods=['GET', 'POST'])
@@ -186,14 +195,12 @@ def delete_model(model_id):
     
     return redirect(url_for('models'))
 
-# Ruta para eliminar un comprador por ID
 @app.route('/delete_buyer/<int:buyer_id>', methods=['POST'])
 def delete_buyer(buyer_id):
     with open('data/data.json', 'r') as json_file:
         data = json.load(json_file)
         buyers = data.get('buyers', [])
         
-        # Filtra la lista de compradores para excluir el comprador a eliminar
         updated_buyers = [buyer for buyer in buyers if buyer['id'] != buyer_id]
         
         data['buyers'] = updated_buyers
@@ -201,6 +208,45 @@ def delete_buyer(buyer_id):
             json.dump(data, json_file, indent=4)
     
     return redirect(url_for('buyers'))
+
+@app.route('/create_seller', methods=['GET', 'POST'])
+def create_seller():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+
+        with open('data/data.json', 'r') as json_file:
+            data = json.load(json_file)
+            sellers = data.get('sellers', [])
+
+            new_seller_id = max([seller['id'] for seller in sellers]) + 1 if sellers else 1
+
+            new_seller = {
+                'id': new_seller_id,
+                'name': name,
+                'email': email,
+                'phone': phone
+            }
+
+            sellers.append(new_seller)
+
+            data['sellers'] = sellers
+            with open('data/data.json', 'w') as json_file:
+                json.dump(data, json_file, indent=4)
+
+        return redirect(url_for('sellers'))
+
+    return render_template('create_seller.html')
+
+# Ruta para mostrar la lista de vendedores
+@app.route('/sellers')
+def sellers():
+    with open('data/data.json', 'r') as json_file:
+        data = json.load(json_file)
+        sellers = data.get('sellers', [])
+    
+    return render_template('sellers.html', sellers=sellers)
 
 # Ruta para eliminar un vendedor por ID
 @app.route('/delete_seller/<int:seller_id>', methods=['POST'])
@@ -217,6 +263,7 @@ def delete_seller(seller_id):
             json.dump(data, json_file, indent=4)
     
     return redirect(url_for('sellers'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

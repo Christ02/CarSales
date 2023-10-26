@@ -32,3 +32,12 @@ def create_sale():
         return redirect(url_for('sales'))  # Redirige de nuevo a la lista de ventas
 
     return render_template('create_sale.html')
+
+@app.route('/create_seller', methods=['GET', 'POST'])
+def create_seller():
+    if request.method == 'POST':
+
+
+        return redirect(url_for('sellers'))  
+
+    return render_template('create_seller.html')

@@ -3,14 +3,60 @@
 <head>
     <title>Venta de Carros</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        li {
+            margin: 10px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
 </head>
 <body>
     <h1>Bienvenido a la Venta de Carros</h1>
-    <ul>
-        <li><a href="{{ url_for('cars') }}">Ver Lista de Carros</a></li>
-        <li><a href="{{ url_for('create_car') }}">Crear un Nuevo Carro</a></li>
-        <li><a href="{{ url_for('sales') }}">Ver Lista de Ventas</a></li>
-        <!-- Agrega enlaces a otras páginas aquí -->
+    <ul class="menu">
+        <li><a href="{{ url_for('cars') }}">
+            <i class="fas fa-car"></i>
+            <span>Ver Lista de Carros</span>
+        </a></li>
+        <li><a href="{{ url_for('create_car') }}">
+            <i class="fas fa-plus-circle"></i>
+            <span>Crear un Nuevo Carro</span>
+        </a></li>
+        <li><a href="{{ url_for('sales') }}">
+            <i class="fas fa-list"></i>
+            <span>Ver Lista de Ventas</span>
+        </a></li>
+        <li><a href="{{ url_for('create_sale') }}">
+            <i class="fas fa-plus"></i>
+            <span>Crear una Nueva Venta</span>
+        </a></li>
+        <li><a href="{{ url_for('sellers') }}">
+            <i class="fas fa-users"></i>
+            <span>Ver Lista de Vendedores</span>
+        </a></li>
     </ul>
+    
 </body>
 </html>

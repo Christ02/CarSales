@@ -3,7 +3,6 @@
 <head>
     <title>Lista de Ventas</title>
     <link rel="stylesheet" href="/static/css/cars-style.css">
-
 </head>
 
 <header>
@@ -19,7 +18,18 @@
 <body>
     <section id="sales">
         <h2>Historial de Ventas</h2>
-        <table>
+
+        <form action="{{ url_for('sales') }}" method="GET" class="filter-form">
+            <label for="buyer_name">Comprador:</label>
+            <input type="text" name="buyer_name" id="buyer_name">
+            <label for="car_id">ID del Carro:</label>
+            <input type="text" name="car_id" id="car_id">
+            <label for="date">Fecha:</label>
+            <input type="text" name="date" id="date">
+            <input type="submit" value="Filtrar">
+        </form>
+
+        <table class="car-table">
             <tr>
                 <th>ID</th>
                 <th>Comprador</th>
