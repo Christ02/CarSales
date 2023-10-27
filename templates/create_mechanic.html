@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear un Nuevo Carro</title>
+    <link rel="stylesheet" href="/static/css/cars-style.css">
+    <link rel="stylesheet" href="/static/css/create_mechanic.css">
+</head>
+
+<header>
+    <h1>Ingreso de Carro en Reparación</h1>
+
+    <nav class="navigation">
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('mechanics') }}">Lista de Carros</a>
+    </nav>
+
+</header>
+<body>
+    <section id="create-mechanic">
+        <h2>Formulario de Ingreso de Carro en Reparación</h2>
+        <form method="POST" action="{{ url_for('create_mechanic') }}">
+            <label for="date_of_entry">Fecha de Ingreso:</label>
+            <input type="date" name="date_of_entry" id="date_of_entry" required>
+            
+            <label for="client_name">Cliente:</label>
+            <input type="text" name="client_name" id="client_name" required>
+            
+            <label for="responsible_person">Encargado:</label>
+            <input type="text" name="responsible_person" id="responsible_person" required>
+            
+            <label for="main_issue">Problema Principal:</label>
+            <textarea name="main_issue" id="main_issue" rows="4" required></textarea>
+            
+            <label for="contact_info">Información de Contacto del Cliente:</label>
+            <input type="text" name="contact_info" id="contact_info" required>
+
+            <input type="submit" value="Ingresar Carro en Reparación">
+        </form>
+    </section>
+</body>
+</html>

@@ -91,7 +91,16 @@
             "fuel_type": "Gasolina"
         }
     ],
-    "buyers":[
-        
+    "buyers": [],
+    "mechanics": [
+        {
+            "id": 1,
+            "date_of_entry": "2023-10-26",
+            "client_name": "Miguel",
+            "responsible_person": "Pedro Pablo",
+            "main_issue": "Ruido en los frenos",
+            "contact_info": "53067899",
+            "delivered": true
+        }
     ]
 }

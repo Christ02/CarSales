@@ -387,6 +387,70 @@ def create_buyer():
 
     return render_template('create_buyer.html')
 
+
+@app.route('/create_mechanic', methods=['GET', 'POST'])
+def create_mechanic():
+    if request.method == 'POST':
+        date_of_entry = request.form['date_of_entry']
+        client_name = request.form['client_name']
+        responsible_person = request.form['responsible_person']
+        main_issue = request.form['main_issue']
+        contact_info = request.form['contact_info']
+
+        with open('data/data.json', 'r') as json_file:
+            data = json.load(json_file)
+            mechanics = data.get('mechanics', [])
+
+            new_mechanic_id = max([mechanic['id'] for mechanic in mechanics]) + 1 if mechanics else 1
+
+            new_mechanic = {
+                'id': new_mechanic_id,
+                'date_of_entry': date_of_entry,
+                'client_name': client_name,
+                'responsible_person': responsible_person,
+                'main_issue': main_issue,
+                'contact_info': contact_info,
+                'delivered': False  
+            }
+
+            mechanics.append(new_mechanic)
+
+            # Actualiza el archivo JSON con los nuevos datos
+            data['mechanics'] = mechanics
+            with open('data/data.json', 'w') as json_file:
+                json.dump(data, json_file, indent=4)
+
+        return redirect(url_for('mechanics'))
+
+    return render_template('create_mechanic.html')
+
+# Agrega una vista para mostrar la lista de carros en reparación
+@app.route('/mechanics', methods=['GET'])
+def mechanics():
+    with open('data/data.json', 'r') as json_file:
+        data = json.load(json_file)
+        mechanics = data.get('mechanics', [])
+
+    return render_template('mechanics.html', mechanics=mechanics)
+
+# Agrega una vista para eliminar un registro de reparación cuando se entrega al cliente
+@app.route('/deliver_mechanic/<int:mechanic_id>', methods=['POST'])
+def deliver_mechanic(mechanic_id):
+    with open('data/data.json', 'r') as json_file:
+        data = json.load(json_file)
+        mechanics = data.get('mechanics', [])
+
+        for mechanic in mechanics:
+            if mechanic['id'] == mechanic_id:
+                mechanic['delivered'] = True
+
+        # Actualiza el archivo JSON con los cambios
+        data['mechanics'] = mechanics
+        with open('data/data.json', 'w') as json_file:
+            json.dump(data, json_file, indent=4)
+
+    return redirect(url_for('mechanics'))
+
 if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = 'uploads'
     app.run(debug=True)

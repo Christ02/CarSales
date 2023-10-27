@@ -1,0 +1,46 @@
+/* Estilos específicos para la página create_mechanic */
+#create-mechanic {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+#create-mechanic h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#create-mechanic label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#create-mechanic input[type="date"],
+#create-mechanic input[type="text"],
+#create-mechanic textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#create-mechanic input[type="submit"] {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para errores de validación */
+#error-message {
+    color: red;
+    font-size: 0.875rem;
+    margin-top: 5px;
+}

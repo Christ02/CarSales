@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Carros en Reparación</title>
+    <link rel="stylesheet" href="/static/css/mechanics-style.css">
+</head>
+
+<header>
+    <h1>Carros en Reparación</h1>
+
+    <nav class="navigation">
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('create_mechanic') }}">Ingresar Carro en Reparación</a>
+    </nav>
+</header>
+
+<body>
+    <section id="mechanics">
+        <h2>Carros en Reparación</h2>
+        
+        <table class="mechanic-table">
+            <tr>
+                <th>ID</th>
+                <th>Fecha de Ingreso</th>
+                <th>Cliente</th>
+                <th>Encargado</th>
+                <th>Problema Principal</th>
+                <th>Información de Contacto</th>
+                <th>Entregado</th>
+                <th>Acciones</th>
+            </tr>
+            {% for mechanic in mechanics %}
+            <tr>
+                <td>{{ mechanic.id }}</td>
+                <td>{{ mechanic.date_of_entry }}</td>
+                <td>{{ mechanic.client_name }}</td>
+                <td>{{ mechanic.responsible_person }}</td>
+                <td>{{ mechanic.main_issue }}</td>
+                <td>{{ mechanic.contact_info }}</td>
+                <td>{{ "Sí" if mechanic.delivered else "No" }}</td>
+                <td>
+                    {% if not mechanic.delivered %}
+                    <form method="POST" action="{{ url_for('deliver_mechanic', mechanic_id=mechanic.id) }}">
+                        <button type="submit">Entregar al Cliente</button>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</body>
+</html>
