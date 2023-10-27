@@ -346,10 +346,6 @@ def delete_seller(seller_id):
     
     return redirect(url_for('sellers'))
 
-if __name__ == '__main__':
-    app.config['UPLOAD_FOLDER'] = 'uploads'
-    app.run(debug=True)
-
 
 @app.route('/buyers')
 def buyers():
@@ -390,3 +386,7 @@ def create_buyer():
         return redirect(url_for('buyers'))
 
     return render_template('create_buyer.html')
+
+if __name__ == '__main__':
+    app.config['UPLOAD_FOLDER'] = 'uploads'
+    app.run(debug=True)
