@@ -349,3 +349,44 @@ def delete_seller(seller_id):
 if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = 'uploads'
     app.run(debug=True)
+
+
+@app.route('/buyers')
+def buyers():
+    with open('data/data.json', 'r') as json_file:
+        data = json.load(json_file)
+        buyers = data.get('buyers', [])
+    
+    return render_template('buyers.html', buyers=buyers)
+
+
+
+@app.route('/create_buyer', methods=['GET', 'POST'])
+def create_buyer():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+
+        with open('data/data.json', 'r') as json_file:
+            data = json.load(json_file)
+            buyers = data.get('buyers', [])
+
+            new_buyer_id = max([buyer['id'] for buyer in buyers]) + 1 if buyers else 1
+
+            new_buyer = {
+                'id': new_buyer_id,
+                'name': name,
+                'email': email,
+                'phone': phone
+            }
+
+            buyers.append(new_buyer)
+
+            data['buyers'] = buyers
+            with open('data/data.json', 'w') as json_file:
+                json.dump(data, json_file, indent=4)
+
+        return redirect(url_for('buyers'))
+
+    return render_template('create_buyer.html')

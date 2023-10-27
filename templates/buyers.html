@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Vendedores</title>
+    <title>Lista de Compradores</title>
     <link rel="stylesheet" href="/static/css/cars-style.css">
 </head>
 
 <header>
-    <h1>Lista de Vendedores</h1>
+    <h1>Lista de Compradores</h1>
 
     <nav class="navigation">
         <a href="{{ url_for('index') }}">Inicio</a>
-        <a href="{{ url_for('create_seller') }}">Agregar Vendedor</a>
+        <a href="{{ url_for('create_buyer') }}">Agregar Comprador</a>
 
     </nav>
 </header>
 
 <body>
-    <section id="sellers">
-        <h2>Lista de Vendedores</h2>
+    <section id="buyers">
+        <h2>Lista de Compradores</h2>
 
 
         <table>
@@ -28,15 +28,15 @@
                 <th>Teléfono</th>
                 <th>Eliminar</th>
             </tr>
-            {% for seller in sellers %}
+            {% for buyer in buyers %}
             <tr>
-                <td>{{ seller.id }}</td>
-                <td>{{ seller.name }}</td>
-                <td>{{ seller.email }}</td>
-                <td>{{ seller.phone }}</td>
+                <td>{{ buyer.id }}</td>
+                <td>{{ buyer.name }}</td>
+                <td>{{ buyer.email }}</td>
+                <td>{{ buyer.phone }}</td>
                 <td>
-                    <form method="POST" action="{{ url_for('delete_seller', seller_id=seller.id) }}">
-                        <button type="submit">Despedir</button>
+                    <form method="POST" action="{{ url_for('delete_buyer', buyer_id=buyer.id) }}">
+                        <button type="submit">Borrar</button>
                     </form>
                 </td>
             </tr>

@@ -69,7 +69,14 @@
             "date": "31/10/2023"
         }
     ],
-    "sellers": [],
+    "sellers": [
+        {
+            "id": 1,
+            "name": "Pedro",
+            "email": "pedro@gmail.com",
+            "phone": "12345678"
+        }
+    ],
     "motos": [
         {
             "id": 1,
@@ -83,5 +90,8 @@
             "engine": "300cc",
             "fuel_type": "Gasolina"
         }
+    ],
+    "buyers":[
+        
     ]
 }

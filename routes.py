@@ -47,3 +47,13 @@ def motos():
 
 
     return render_template('motos.html', motos=motos)
+
+
+@app.route('/create_buyer', methods=['GET', 'POST'])
+def create_buyer():
+    if request.method == 'POST':
+
+
+        return redirect(url_for('buyers'))  
+
+    return render_template('create_buyer.html')
