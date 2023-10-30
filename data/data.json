@@ -89,6 +89,18 @@
             "transmission": "Automatico",
             "engine": "300cc",
             "fuel_type": "Gasolina"
+        },
+        {
+            "id": 2,
+            "make": "Honda",
+            "model": "Roca",
+            "year": "2020",
+            "color": "Azul",
+            "mileage": "6000",
+            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Felcomercio.pe%2Fruedas-tuercas%2Fhonda-peru-renueva-portafolio-cb125f-twister-fotos-noticia-514905-noticia%2F&psig=AOvVaw0avrHiMfdmBxTDi_wvZEep&ust=1698370909234000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiR_OfKkoIDFQAAAAAdAAAAABAE",
+            "transmission": "Automatico",
+            "engine": "300cc",
+            "fuel_type": "Gasolina"
         }
     ],
     "buyers": [],
