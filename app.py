@@ -24,24 +24,56 @@ def index():
     return render_template('index.html')
 
 # Ruta para mostrar la lista de carros desde el archivo JSON
+# @app.route('/cars', methods=['GET'])
+# def cars():
+#     with open('data/data.json', 'r') as json_file:
+#         data = json.load(json_file)
+#         cars = data.get('cars', [])
+
+
+#     make_filter = request.args.get('make', '')
+#     model_filter = request.args.get('model', '')
+#     year_filter = request.args.get('year', '')
+
+#     filtered_cars = [car for car in cars if
+#                      car['make'].lower().startswith(make_filter.lower()) and
+#                      car['model'].lower().startswith(model_filter.lower()) and
+#                      car['year'].lower().startswith(year_filter.lower())]
+
+#     # return render_template('cars.html', cars=filtered_cars)
+#     return jsonify(cars)
+
+
 @app.route('/cars', methods=['GET'])
 def cars():
     with open('data/data.json', 'r') as json_file:
-        data = json.load(json_file)
-        cars = data.get('cars', [])
+        vehicle_data = json.load(json_file)
+        cars = vehicle_data.get('cars', [])
+    listaPrueba = jsonify(cars)
+    print(listaPrueba)
+    
+    prueba = ""
+    prueba += listaPrueba["id"]
 
+    # html_output = '<ul>'
 
-    make_filter = request.args.get('make', '')
-    model_filter = request.args.get('model', '')
-    year_filter = request.args.get('year', '')
+    # for carro in vehicle_data:
+    #     html_output += f'<li>' \
+    #                 f'ID: {cars["id:"]}<br>' \
+    #                 f'Make: {cars["make:"]}<br>' \
+    #                 f'Model: {cars["mode:"]}<br>' \
+    #                 f'Year: {cars["year:"]}<br>' \
+    #                 f'Color: {cars["color:"]}<br>' \
+    #                 f'Vehicle Type: {cars["vehicle_type:"]}<br>' \
+    #                 f'Mileage: {cars["mileage:"]}<br>' \
+    #                 f'Photo: <a href="{cars["photo:"]}">View</a><br>' \
+    #                 f'Transmission: {cars["transmission:"]}<br>' \
+    #                 f'Engine: {cars["engine:"]}<br>' \
+    #                 f'Fuel Type: {cars["fuel_type:"]}' \
+    #                 f'</li>'
 
-    filtered_cars = [car for car in cars if
-                     car['make'].lower().startswith(make_filter.lower()) and
-                     car['model'].lower().startswith(model_filter.lower()) and
-                     car['year'].lower().startswith(year_filter.lower())]
-
-    # return render_template('cars.html', cars=filtered_cars)
-    return jsonify(cars)
+    # html_output += '</ul>'
+    return jsonify(prueba)
 
 @app.route('/motos', methods=['GET'])
 def motos():
