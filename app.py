@@ -46,14 +46,38 @@ def index():
 
 @app.route('/cars', methods=['GET'])
 def cars():
+    # with open('data/data.json', 'r') as json_file:
+    #     vehicle_data = json.load(json_file)
+    #     cars = vehicle_data.get('cars', [])
+    # listaPrueba = jsonify(cars)
+    # print(listaPrueba)
     with open('data/data.json', 'r') as json_file:
+
         vehicle_data = json.load(json_file)
         cars = vehicle_data.get('cars', [])
-    listaPrueba = jsonify(cars)
-    print(listaPrueba)
+
+        html_output = '<ul>'
+
+    for car in cars:
+        html_output += f'<li>Id: {car["id"]} - Marca: {car["make"]} - Modelo: {car["model"]} - Año: {car["year"]} - Color: {car["color"]} - Tipo de Vehiculo: {car["vehicle_type"]} - Kilometraje: {car["mileage"]} - Photo: {car["photo"]} - Transmision: {car["transmission"]} - Motor: {car["engine"]} - Tipo de Gasolina: {car["fuel_type"]}  </li>'
+
+        html_output += '</ul>\n'
+
+    # cars= html_output 
+
+    # make_filter = request.args.get('make', '')
+    # model_filter = request.args.get('model', '')
+    # year_filter = request.args.get('year', '')
+
+    # filtered_cars = [car for car in cars if
+    #                  car['make'].lower().startswith(make_filter.lower()) and
+    #                  car['model'].lower().startswith(model_filter.lower()) and
+    #                  car['year'].lower().startswith(year_filter.lower())]
+
     
-    prueba = ""
-    prueba += listaPrueba["id"]
+    
+    # prueba = ""
+    # prueba += listaPrueba["id"]
 
     # html_output = '<ul>'
 
@@ -73,7 +97,11 @@ def cars():
     #                 f'</li>'
 
     # html_output += '</ul>'
-    return jsonify(prueba)
+    # return jsonify(html_output)
+    # carros = html_output
+    prueb = jsonify(html_output)
+    return render_template('cars.html', carrs =prueb)
+    
 
 @app.route('/motos', methods=['GET'])
 def motos():
