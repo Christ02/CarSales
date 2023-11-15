@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Carros</title>
     <link rel="stylesheet" href="/static/css/cars-style.css">
 </head>
 
-<header>
-    <h1>Lista de Carros</h1>
-
-    <nav class="navigation">
-        <a href="{{ url_for('index') }}">Inicio</a>
-        <a href="{{ url_for('create_car') }}">Agregar Carro</a>
-    </nav>
-</header>
-
 <body>
+    <header>
+        <h1>Lista de Carros</h1>
+        <nav class="navigation">
+            <a href="{{ url_for('index') }}">Inicio</a>
+            <a href="{{ url_for('create_car') }}">Agregar Carro</a>
+        </nav>
+    </header>
+
     <section id="cars">
         <h2>Carros Disponibles</h2>
         
-        <form method="GET" action="{{ url_for('cars') }}" id="car-filter-form">
+        <div id="filter-container">
             <label for="make-filter">Marca:</label>
             <input type="text" name="make" id="make-filter">
             
@@ -28,10 +29,10 @@
             <label for="year-filter">Año:</label>
             <input type="text" name="year" id="year-filter">
             
-            <input type="submit" value="Filtrar">
-        </form>
+            <button onclick="filterCars()">Filtrar</button>
+        </div>
         
-        <table class="car-table">
+        <table class="car-table" id="car-table">
             <tr>
                 <th>Marca</th>
                 <th>Modelo</th>
@@ -44,21 +45,44 @@
                 <th>Motor</th>
                 <th>Tipo de Combustible</th>
             </tr>
-            {% for car in cars %}
-            <tr>
-                <td>{{ car.make }}</td>
-                <td>{{ car.model }}</td>
-                <td>{{ car.year }}</td>
-                <td>{{ car.color }}</td>
-                <td>{{ car.vehicle_type }}</td>
-                <td>{{ car.mileage }}</td>
-                <td><img class="car-photo" src="{{ car.photo }}" alt="Foto"></td>
-                <td>{{ car.transmission }}</td>
-                <td>{{ car.engine }}</td>
-                <td>{{ car.fuel_type }}</td>
-            </tr>
-            {% endfor %}
         </table>
     </section>
+
+    <script>
+        function filterCars() {
+            const make = document.getElementById('make-filter').value;
+            const model = document.getElementById('model-filter').value;
+            const year = document.getElementById('year-filter').value;
+
+            fetch(`/cars?make=${make}&model=${model}&year=${year}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update the table with the filtered cars
+                    updateTable(data.cars);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function updateTable(cars) {
+            const table = document.getElementById('car-table');
+            // Remove existing rows
+            table.innerHTML = '<tr><th>Marca</th><th>Modelo</th><th>Año</th><th>Color</th><th>Tipo de Vehículo</th><th>Kilometraje</th><th>Fotografía</th><th>Transmisión</th><th>Motor</th><th>Tipo de Combustible</th></tr>';
+
+            // Add new rows for each car
+            cars.forEach(car => {
+                const row = table.insertRow();
+                row.innerHTML = `<td>${car.make}</td>
+                                 <td>${car.model}</td>
+                                 <td>${car.year}</td>
+                                 <td>${car.color}</td>
+                                 <td>${car.vehicle_type}</td>
+                                 <td>${car.mileage}</td>
+                                 <td><img class="car-photo" src="${car.photo}" alt="Foto"></td>
+                                 <td>${car.transmission}</td>
+                                 <td>${car.engine}</td>
+                                 <td>${car.fuel_type}</td>`;
+            });
+        }
+    </script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, request, jsonify
 import json
 import os
 from file_upload import allowed_file
@@ -29,6 +30,7 @@ def cars():
         data = json.load(json_file)
         cars = data.get('cars', [])
 
+
     make_filter = request.args.get('make', '')
     model_filter = request.args.get('model', '')
     year_filter = request.args.get('year', '')
@@ -38,7 +40,8 @@ def cars():
                      car['model'].lower().startswith(model_filter.lower()) and
                      car['year'].lower().startswith(year_filter.lower())]
 
-    return render_template('cars.html', cars=filtered_cars)
+    # return render_template('cars.html', cars=filtered_cars)
+    return jsonify(cars)
 
 @app.route('/motos', methods=['GET'])
 def motos():
@@ -55,7 +58,10 @@ def motos():
                      moto['model'].lower().startswith(model_filter.lower()) and
                      moto['year'].lower().startswith(year_filter.lower())]
 
-    return render_template('motos.html', motos=filtered_motos)
+    # return render_template('motos.html', motos=filtered_motos)
+    # return jsonify('motos.html', motos=filtered_motos)
+    return jsonify (filtered_motos)
+
 
 
 @app.route('/sales', methods=['GET'])

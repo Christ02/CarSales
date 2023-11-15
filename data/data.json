@@ -56,51 +56,19 @@
     "sales": [
         {
             "id": 1,
-            "buyer_name": "Pedro",
-            "car_id": 1,
-            "sale_price": 1000,
-            "date": "25/10/2023"
-        },
-        {
-            "id": 2,
-            "buyer_name": "Juanito",
+            "buyer_name": "Javier",
             "car_id": 2,
-            "sale_price": 3500.0,
-            "date": "31/10/2023"
-        }
-    ],
-    "sellers": [
-        {
-            "id": 1,
-            "name": "Pedro",
-            "email": "pedro@gmail.com",
-            "phone": "12345678"
-        }
-    ],
-    "motos": [
-        {
-            "id": 1,
-            "make": "Honda",
-            "model": "Roca",
-            "year": "2020",
-            "color": "Azul",
-            "mileage": "6000",
-            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Felcomercio.pe%2Fruedas-tuercas%2Fhonda-peru-renueva-portafolio-cb125f-twister-fotos-noticia-514905-noticia%2F&psig=AOvVaw0avrHiMfdmBxTDi_wvZEep&ust=1698370909234000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiR_OfKkoIDFQAAAAAdAAAAABAE",
-            "transmission": "Automatico",
-            "engine": "300cc",
-            "fuel_type": "Gasolina"
+            "sale_price": 3000.0,
+            "date": "27/10/2023"
         }
     ],
     "buyers": [],
-    "mechanics": [
+    "sellers": [
         {
             "id": 1,
-            "date_of_entry": "2023-10-26",
-            "client_name": "Miguel",
-            "responsible_person": "Pedro Pablo",
-            "main_issue": "Ruido en los frenos",
-            "contact_info": "53067899",
-            "delivered": true
+            "name": "hia",
+            "email": "hsah@hfaj.com",
+            "phone": "123"
         }
     ]
 }
