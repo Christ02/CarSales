@@ -12,7 +12,7 @@ def index():
 
 @app.route('/cars', methods=['GET'])
 def cars():
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         cars = data.get('cars', [])
 
@@ -32,7 +32,7 @@ def cars():
 
 @app.route('/motos', methods=['GET'])
 def motos():
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         motos = data.get('motos', [])
 
@@ -45,15 +45,15 @@ def motos():
                      moto['model'].lower().startswith(model_filter.lower()) and
                      moto['year'].lower().startswith(year_filter.lower())]
 
-    # return render_template('motos.html', motos=filtered_motos)
+    return render_template('motos.html', motos=filtered_motos)
     # return jsonify('motos.html', motos=filtered_motos)
-    return jsonify (filtered_motos)
+    # return jsonify (filtered_motos)
 
 
 
 @app.route('/sales', methods=['GET'])
 def sales():
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         sales = data.get('sales', [])
     
@@ -82,7 +82,7 @@ def create_car():
         engine = request.form['engine']
         fuel_type = request.form['fuel_type']
 
-        with open('data/data.json', 'r') as json_file:
+        with open('../data/data.json', 'r') as json_file:
             data = json.load(json_file)
             cars = data.get('cars', [])
 
@@ -126,7 +126,7 @@ def create_moto():
         engine = request.form['engine']
         fuel_type = request.form['fuel_type']
 
-        with open('data/data.json', 'r') as json_file:
+        with open('../data/data.json', 'r') as json_file:
             data = json.load(json_file)
             motos = data.get('motos', [])
 
@@ -167,7 +167,7 @@ def create_sale():
 
         
 
-        with open('data/data.json', 'r') as json_file:
+        with open('../data/data.json', 'r') as json_file:
             data = json.load(json_file)
             sales = data.get('sales', [])
 
@@ -200,7 +200,7 @@ def create_sale():
 # Ruta para eliminar un carro por ID
 @app.route('/delete_car/<int:car_id>', methods=['POST'])
 def delete_car(car_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         cars = data.get('cars', [])
         
@@ -216,7 +216,7 @@ def delete_car(car_id):
 # Ruta para eliminar una venta por ID
 @app.route('/delete_sale/<int:sale_id>', methods=['POST'])
 def delete_sale(sale_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         sales = data.get('sales', [])
         
@@ -232,7 +232,7 @@ def delete_sale(sale_id):
 # Ruta para eliminar una marca por ID
 @app.route('/delete_brand/<int:brand_id>', methods=['POST'])
 def delete_brand(brand_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         brands = data.get('brands', [])
         
@@ -248,7 +248,7 @@ def delete_brand(brand_id):
 # Ruta para eliminar un modelo por ID
 @app.route('/delete_model/<int:model_id>', methods=['POST'])
 def delete_model(model_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         models = data.get('models', [])
         
@@ -263,7 +263,7 @@ def delete_model(model_id):
 
 @app.route('/delete_buyer/<int:buyer_id>', methods=['POST'])
 def delete_buyer(buyer_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         buyers = data.get('buyers', [])
         
@@ -282,7 +282,7 @@ def create_seller():
         email = request.form['email']
         phone = request.form['phone']
 
-        with open('data/data.json', 'r') as json_file:
+        with open('../data/data.json', 'r') as json_file:
             data = json.load(json_file)
             sellers = data.get('sellers', [])
 
@@ -308,7 +308,7 @@ def create_seller():
 # Ruta para mostrar la lista de vendedores
 @app.route('/sellers')
 def sellers():
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         sellers = data.get('sellers', [])
     
@@ -317,7 +317,7 @@ def sellers():
 # Ruta para eliminar un vendedor por ID
 @app.route('/delete_seller/<int:seller_id>', methods=['POST'])
 def delete_seller(seller_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         sellers = data.get('sellers', [])
         
@@ -333,7 +333,7 @@ def delete_seller(seller_id):
 
 @app.route('/buyers')
 def buyers():
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         buyers = data.get('buyers', [])
     
@@ -346,7 +346,7 @@ def create_buyer():
         email = request.form['email']
         phone = request.form['phone']
 
-        with open('data/data.json', 'r') as json_file:
+        with open('../data/data.json', 'r') as json_file:
             data = json.load(json_file)
             buyers = data.get('buyers', [])
 
@@ -378,7 +378,7 @@ def create_mechanic():
         main_issue = request.form['main_issue']
         contact_info = request.form['contact_info']
 
-        with open('data/data.json', 'r') as json_file:
+        with open('../data/data.json', 'r') as json_file:
             data = json.load(json_file)
             mechanics = data.get('mechanics', [])
 
@@ -398,7 +398,7 @@ def create_mechanic():
 
             # Actualiza el archivo JSON con los nuevos datos
             data['mechanics'] = mechanics
-            with open('data/data.json', 'w') as json_file:
+            with open('../data/data.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
 
         return redirect(url_for('mechanics'))
@@ -408,7 +408,7 @@ def create_mechanic():
 # Agrega una vista para mostrar la lista de carros en reparación
 @app.route('/mechanics', methods=['GET'])
 def mechanics():
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         mechanics = data.get('mechanics', [])
 
@@ -417,7 +417,7 @@ def mechanics():
 # Agrega una vista para eliminar un registro de reparación cuando se entrega al cliente
 @app.route('/deliver_mechanic/<int:mechanic_id>', methods=['POST'])
 def deliver_mechanic(mechanic_id):
-    with open('data/data.json', 'r') as json_file:
+    with open('../data/data.json', 'r') as json_file:
         data = json.load(json_file)
         mechanics = data.get('mechanics', [])
 
