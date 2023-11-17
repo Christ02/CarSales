@@ -10,26 +10,24 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# Ruta para mostrar la lista de carros desde el archivo JSON
 @app.route('/cars', methods=['GET'])
 def cars():
     with open('data/data.json', 'r') as json_file:
         data = json.load(json_file)
         cars = data.get('cars', [])
 
-
     make_filter = request.args.get('make', '')
     model_filter = request.args.get('model', '')
     year_filter = request.args.get('year', '')
 
-    filtered_cars = [car for car in cars if
-                     car['make'].lower().startswith(make_filter.lower()) and
-                     car['model'].lower().startswith(model_filter.lower()) and
-                     car['year'].lower().startswith(year_filter.lower())]
+    filtered_cars = [
+        car for car in cars if
+        'model' in car and
+        car['make'].lower().startswith(make_filter.lower()) and
+        car['model'].lower().startswith(model_filter.lower()) and
+        car['year'].lower().startswith(year_filter.lower())
+    ]
 
-
-
-    # return render_template('cars.html', cars=filtered_cars)
     return jsonify(filtered_cars)
 
 @app.route('/motos', methods=['GET'])
