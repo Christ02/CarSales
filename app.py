@@ -2,21 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask import Flask, request, jsonify
 import json
 import os
-from file_upload import allowed_file
-from werkzeug.utils import secure_filename
-
-
 
 app = Flask(__name__)
-
-
-UPLOAD_FOLDER = 'uploads'
-
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 # Ruta principal
 @app.route('/')
@@ -97,12 +84,6 @@ def create_car():
         engine = request.form['engine']
         fuel_type = request.form['fuel_type']
 
-        # Procesa la imagen cargada
-        photo = request.files['photo']
-        if photo and allowed_file(photo.filename):
-            filename = secure_filename(photo.filename)
-            photo.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
         with open('data/data.json', 'r') as json_file:
             data = json.load(json_file)
             cars = data.get('cars', [])
@@ -117,7 +98,6 @@ def create_car():
                 'color': color,
                 'vehicle_type': vehicle_type,
                 'mileage': mileage,
-                'photo': photo,
                 'transmission': transmission,
                 'engine': engine,
                 'fuel_type': fuel_type
@@ -144,7 +124,6 @@ def create_moto():
         color = request.form['color']
         # vehicle_type = request.form['vehicle_type']
         mileage = request.form['mileage']
-        photo = request.form['photo']
         transmission = request.form['transmission']
         engine = request.form['engine']
         fuel_type = request.form['fuel_type']
@@ -163,7 +142,6 @@ def create_moto():
                 'color': color,
                 # 'vehicle_type': vehicle_type,
                 'mileage': mileage,
-                'photo': photo,
                 'transmission': transmission,
                 'engine': engine,
                 'fuel_type': fuel_type
@@ -460,5 +438,4 @@ def deliver_mechanic(mechanic_id):
     return redirect(url_for('mechanics'))
 
 if __name__ == '__main__':
-    app.config['UPLOAD_FOLDER'] = 'uploads'
     app.run(debug=True)
