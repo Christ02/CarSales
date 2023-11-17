@@ -339,8 +339,6 @@ def buyers():
     
     return render_template('buyers.html', buyers=buyers)
 
-
-
 @app.route('/create_buyer', methods=['GET', 'POST'])
 def create_buyer():
     if request.method == 'POST':
@@ -370,7 +368,6 @@ def create_buyer():
         return redirect(url_for('buyers'))
 
     return render_template('create_buyer.html')
-
 
 @app.route('/create_mechanic', methods=['GET', 'POST'])
 def create_mechanic():
