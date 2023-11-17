@@ -2,3 +2,4 @@ Flask==1.1.4
 Jinja2==2.11.3
 pytest
 Flask-Testing
+MarkupSafe==1.1.1
