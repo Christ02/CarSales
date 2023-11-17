@@ -48,41 +48,5 @@
         </table>
     </section>
 
-    <script>
-        function filterCars() {
-            const make = document.getElementById('make-filter').value;
-            const model = document.getElementById('model-filter').value;
-            const year = document.getElementById('year-filter').value;
-
-            fetch(`/cars?make=${make}&model=${model}&year=${year}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Update the table with the filtered cars
-                    updateTable(data.cars);
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        function updateTable(cars) {
-            const table = document.getElementById('car-table');
-            // Remove existing rows
-            table.innerHTML = '<tr><th>Marca</th><th>Modelo</th><th>Año</th><th>Color</th><th>Tipo de Vehículo</th><th>Kilometraje</th><th>Fotografía</th><th>Transmisión</th><th>Motor</th><th>Tipo de Combustible</th></tr>';
-
-            // Add new rows for each car
-            cars.forEach(car => {
-                const row = table.insertRow();
-                row.innerHTML = `<td>${car.make}</td>
-                                 <td>${car.model}</td>
-                                 <td>${car.year}</td>
-                                 <td>${car.color}</td>
-                                 <td>${car.vehicle_type}</td>
-                                 <td>${car.mileage}</td>
-                                 <td><img class="car-photo" src="${car.photo}" alt="Foto"></td>
-                                 <td>${car.transmission}</td>
-                                 <td>${car.engine}</td>
-                                 <td>${car.fuel_type}</td>`;
-            });
-        }
-    </script>
 </body>
 </html>

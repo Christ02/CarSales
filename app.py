@@ -40,8 +40,10 @@ def cars():
                      car['model'].lower().startswith(model_filter.lower()) and
                      car['year'].lower().startswith(year_filter.lower())]
 
+
+
     # return render_template('cars.html', cars=filtered_cars)
-    return jsonify(cars)
+    return jsonify(filtered_cars)
 
 @app.route('/motos', methods=['GET'])
 def motos():
@@ -129,7 +131,7 @@ def create_car():
 
         return redirect(url_for('cars'))
 
-    return render_template('create_car.html')
+    return jsonify(new_car)
 
 
 @app.route('/create_moto', methods=['GET', 'POST'])

@@ -51,6 +51,18 @@
             "transmission": "Automatico",
             "engine": "2.0",
             "fuel_type": "Gasolina"
+        },
+        {
+            "id": 5,
+            "make": "Honda",
+            "model": "Civic",
+            "year": "2007",
+            "color": "Rojo",
+            "vehicle_type": "Sedan",
+            "mileage": "1200",
+            "transmission": "Auto",
+            "engine": "1200",
+            "fuel_type": "Gas"
         }
     ],
     "sales": [
@@ -58,56 +70,44 @@
             "id": 1,
             "buyer_name": "Javier",
             "car_id": 2,
-<<<<<<< HEAD
             "sale_price": 3000.0,
             "date": "27/10/2023"
-=======
-            "sale_price": 3500.0,
-            "date": "31/10/2023"
-        }
-    ],
-    "sellers": [
-        {
-            "id": 1,
-            "name": "Pedro",
-            "email": "pedro@gmail.com",
-            "phone": "12345678"
-        }
-    ],
-    "motos": [
-        {
-            "id": 1,
-            "make": "Honda",
-            "model": "Roca",
-            "year": "2020",
-            "color": "Azul",
-            "mileage": "6000",
-            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Felcomercio.pe%2Fruedas-tuercas%2Fhonda-peru-renueva-portafolio-cb125f-twister-fotos-noticia-514905-noticia%2F&psig=AOvVaw0avrHiMfdmBxTDi_wvZEep&ust=1698370909234000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiR_OfKkoIDFQAAAAAdAAAAABAE",
-            "transmission": "Automatico",
-            "engine": "300cc",
-            "fuel_type": "Gasolina"
         },
         {
             "id": 2,
-            "make": "Honda",
-            "model": "Roca",
-            "year": "2020",
-            "color": "Azul",
-            "mileage": "6000",
-            "photo": "https://www.google.com/url?sa=i&url=https%3A%2F%2Felcomercio.pe%2Fruedas-tuercas%2Fhonda-peru-renueva-portafolio-cb125f-twister-fotos-noticia-514905-noticia%2F&psig=AOvVaw0avrHiMfdmBxTDi_wvZEep&ust=1698370909234000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiR_OfKkoIDFQAAAAAdAAAAABAE",
-            "transmission": "Automatico",
-            "engine": "300cc",
-            "fuel_type": "Gasolina"
->>>>>>> a6d7d14b72dc62e8bce9d1110f6279ac61011b9f
+            "buyer_name": "Christian",
+            "car_id": 1,
+            "sale_price": 5000.0,
+            "date": "10/12/2023"
+        },
+        {
+            "id": 3,
+            "buyer_name": "Michael",
+            "car_id": 2,
+            "sale_price": 6000.0,
+            "date": "10/11/2023"
         }
     ],
     "buyers": [],
-    "sellers": [
+    "sellers": [],
+    "mechanics": [
         {
             "id": 1,
-            "name": "hia",
-            "email": "hsah@hfaj.com",
-            "phone": "123"
+            "date_of_entry": "2001-02-02",
+            "client_name": "Christian",
+            "responsible_person": "Javier",
+            "main_issue": "Ruido en el motor",
+            "contact_info": "30280784",
+            "delivered": true
+        },
+        {
+            "id": 2,
+            "date_of_entry": "2023-08-02",
+            "client_name": "Miguel",
+            "responsible_person": "Javier",
+            "main_issue": "Espejos",
+            "contact_info": "53087266",
+            "delivered": true
         }
     ]
 }
