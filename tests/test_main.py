@@ -11,7 +11,27 @@ class TestApp(unittest.TestCase):
             response = client.get('/cars')
             data = response.get_json()
 
-            self.assertEqual(response.status_code, 200)  
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(len(data), 1)
+
+    @patch('builtins.open', new_callable=mock_open, read_data='{"motos": [{"id": 1, "make": "Honda"}]}')
+    def test_motos_route(self, mock_file):
+        with app.test_client() as client:
+            response = client.get('/motos')
+            data = response.get_json()
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(len(data), 1)
+
+    @patch('builtins.open', new_callable=mock_open, read_data='{"sales": [{"id": 1, "buyer_name": "John"}]}')
+    def test_sales_route(self, mock_file):
+        with app.test_client() as client:
+            response = client.get('/sales')
+            data = response.get_json()
+
+            self.assertEqual(response.status_code, 200)
+            self.assertEqual(len(data), 1)
+
 
 if __name__ == '__main__':
     unittest.main()
