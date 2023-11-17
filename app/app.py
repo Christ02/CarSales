@@ -417,6 +417,26 @@ def buyers():
     return render_template('buyers.html', buyers=buyers)
 
 
+#------------------------------------------------------------------------------
+# @app.route('/buyers', methods=['GET'])
+# def buyers():
+#     with open('data/data.json', 'r') as json_file:
+
+#         buyer_data = json.load(json_file)
+#         buyers = buyer_data.get('buyers', [])
+
+#         html_output = '<ul>'
+
+#     for buyer in buyers:
+#         html_output += f'<li>Id: {buyer["id"]} - Nombre: {buyer["name"]} - Email:{buyer["email"]} - Telefono: {buyer["phone"]} - Direccion: {buyer["address"]} </li>'
+
+#         html_output += '</ul>\n'
+
+    
+    # return jsonify(html_output)
+#------------------------------------------------------------------------------
+
+
 
 @app.route('/create_buyer', methods=['GET', 'POST'])
 def create_buyer():
@@ -493,6 +513,25 @@ def mechanics():
         mechanics = data.get('mechanics', [])
 
     return render_template('mechanics.html', mechanics=mechanics)
+
+#------------------------------------------------------------------------------
+# @app.route('/mechanics', methods=['GET'])
+# def mechanics():
+#     with open('data/data.json', 'r') as json_file:
+
+#         mechanic_data = json.load(json_file)
+#         mechanics = mechanic_data.get('mechanics', [])
+
+#         html_output = '<ul>'
+
+#     for mechanic in mechanics:
+#         html_output += f'<li>Id: {mechanic["id"]} - Fecha Entrada: {mechanic["date_of_entry"]} - Nombre Cliente: {mechanic["client_name"]} - Persona Responsable {mechanic["responsible_person"]} - Problema Principal {mechanic["main_issue"]} - Numero de Contacto: {mechanic[contact_info]} - Entregado: {mechanic[delivered]} </li>'
+
+#         html_output += '</ul>\n'
+
+    
+    # return jsonify(html_output)
+#------------------------------------------------------------------------------
 
 # Agrega una vista para eliminar un registro de reparación cuando se entrega al cliente
 @app.route('/deliver_mechanic/<int:mechanic_id>', methods=['POST'])
