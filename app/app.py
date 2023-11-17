@@ -47,7 +47,7 @@ def cars():
         car['year'].lower().startswith(year_filter.lower())
     ]
 
-    return jsonify(filtered_cars)
+    return render_template('cars.html', cars=filtered_cars)
 
 @app.route('/motos', methods=['GET'])
 def motos():
